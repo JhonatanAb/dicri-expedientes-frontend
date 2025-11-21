@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import LoginPage from "./pages/Auth/login";
+import MainLayout from "./layouts/MainLayout";
+import Dashboard from "./pages/Dashboard";
+import CrearExpediente from "./pages/Expedientes/CrearExpediente";
+import ListadoExpedientes from "./pages/Expedientes/ListadoExpedientes";
+import DetalleExpediente from "./pages/Expedientes/DetalleExpediente";
+import Reportes from "./pages/Reportes/Reportes";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      {}
+      <Route path="/login" element={<LoginPage />} />
+      {}
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/expedientes/crear" element={<CrearExpediente />} />
+        <Route path="/expedientes" element={<ListadoExpedientes />} />
+        <Route path="/expedientes/:id" element={<DetalleExpediente />} />
+        <Route path="/reportes" element={<Reportes />} />
+      </Route>
+    
+    </Routes>
   );
 }
 
-export default App;
